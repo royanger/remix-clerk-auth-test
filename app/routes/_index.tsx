@@ -11,11 +11,11 @@ export const meta: V2_MetaFunction = () => {
 
 export const loader: LoaderFunction = async (args) => {
   const { userId } = await getAuth(args);
-  console.log('userId: ', userId); // THIS RETURNS NULL even though I am signed in(?) (see client side below)
+  console.log('userId (Roy): ', userId); // THIS RETURNS NULL even though I am signed in(?) (see client side below)
 
   // If including this, I am redirected the sign in page, with the following message:
-//   The <SignUp/> and <SignIn/> components cannot render when a user is already signed in, unless the application allows multiple sessions. Since a user is signed in and this application only allows a single session, Clerk is redirecting to the Home URL instead.
-// (This notice only appears in development)
+  //   The <SignUp/> and <SignIn/> components cannot render when a user is already signed in, unless the application allows multiple sessions. Since a user is signed in and this application only allows a single session, Clerk is redirecting to the Home URL instead.
+  // (This notice only appears in development)
   if (!userId) {
     return redirect("/sign-in");
   }
